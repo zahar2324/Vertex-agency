@@ -3,6 +3,7 @@
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
+import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -12,53 +13,62 @@ interface Review {
   rating: number;
   comment: string;
   project: string;
+  image: string;
 }
 
 export default function Reviews() {
   const reviews: Review[] = [
     {
       id: 1,
-      name: 'Олена Петренко',
+      name: 'Михайло Коваленко',
       rating: 5,
-      comment: 'Чудовий сайт! Vertex створили для нас професійний односторінковий сайт за тиждень. Все працює ідеально, підтримка на висоті!',
-      project: 'Односторінковий сайт для бізнесу'
+      comment: 'Дуже дякую команді Vertex! Зробили крутий сайт за тиждень. Все працює без збоїв, підтримка реагує миттєво…',
+      project: 'Односторінковий сайт для бізнесу',
+      image: '/review1.jpeg'
     },
     {
       id: 2,
-      name: 'Михайло Коваленко',
+      name: 'Олена Петренко',
       rating: 5,
-      comment: 'Дуже задоволений співпрацею! Сайт виглядає сучасно, швидко завантажується. Команда професійна та відповідальна.',
-      project: 'Корпоративний сайт'
+      comment: 'Чудова команда! Сайт виглядає сучасно, швидко працює, усе зробили саме так, як я хотіла…',
+      project: 'Корпоративний сайт',
+      image: '/review2.jpeg'
     },
     {
       id: 3,
       name: 'Анна Сидоренко',
       rating: 5,
-      comment: 'Відмінна робота! Створили для нас інтернет-магазин. Все інтуїтивно зрозуміло, легко керувати. Рекомендую!',
-      project: 'Інтернет-магазин'
+      comment: 'Vertex створили для нас інтернет-магазин, який перевершив очікування! Все зручно і зрозуміло…',
+      project: 'Інтернет-магазин',
+      image: '/review6.jpeg'
     },
     {
       id: 4,
       name: 'Володимир Мельник',
       rating: 5,
-      comment: 'Швидко, якісно, професійно! Vertex допомогли нам запустити сайт вчасно. Гарантія 5 років - це дуже важливо для нас.',
-      project: 'Сайт послуг'
+      comment: 'Все зробили швидко і якісно! Запустили сайт вчасно, гарантія 5 років — це справді круто…',
+      project: 'Сайт послуг',
+      image: '/review4.jpeg'
     },
     {
       id: 5,
       name: 'Тетяна Лисенко',
       rating: 5,
-      comment: 'Найкраща діджитал агенція! Створили сайт, який привертає клієнтів. Постійна підтримка та оновлення - безкоштовно!',
-      project: 'Особистий бренд'
+      comment: 'Vertex — це просто знахідка! Сайт виглядає стильно, клієнтів побільшало вже за перший тиждень…',
+      project: 'Особистий бренд',
+      image: '/review5.jpeg'
     },
     {
       id: 6,
       name: 'Олександр Бондаренко',
       rating: 5,
-      comment: 'Професійний підхід до кожного кроку. Сайт працює бездоганно, дизайн сучасний. Дякую команді Vertex!',
-      project: 'Електронна візитка'
+      comment: 'Команда знає свою справу! Все зробили акуратно, продумано і з душею. Дизайн сучасний, сайт літає. Рекомендую!',
+      project: 'Електронна візитка',
+      image: '/review3.jpeg'
     }
-  ];
+    
+    
+  ]; 
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -123,7 +133,18 @@ export default function Reviews() {
                     "{review.comment}"
                   </p>
                   <div className="border-t pt-4 mt-auto flex-shrink-0">
-                    <p className="font-semibold text-gray-900">{review.name}</p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 relative">
+                        <Image 
+                          src={review.image}
+                          alt={review.name}
+                          fill
+                          className="object-cover"
+                          sizes="48px"
+                        />
+                      </div>
+                      <p className="font-semibold text-gray-900">{review.name}</p>
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>

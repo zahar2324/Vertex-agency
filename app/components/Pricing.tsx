@@ -28,7 +28,7 @@ export default function Pricing({ onOpenModal }: PricingProps) {
     {
       title: 'Корпоративний сайт до 15 сторінок',
       time: 'Термін виконання - до 14 днів',
-      price: '400 $',
+      price: '600 $',
       features: [
         'Розробка структури',
         'Підбір додаткових блоків',
@@ -40,7 +40,7 @@ export default function Pricing({ onOpenModal }: PricingProps) {
     {
       title: 'Інтернет-магазин',
       time: 'Термін виконання - до 20 днів',
-      price: '400 $',
+      price: '999 $',
       features: [
         'Розробка структури',
         'Розробка дизайну',
