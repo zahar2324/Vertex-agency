@@ -5,6 +5,7 @@ import { Send } from 'lucide-react';
 import { FaTelegram, FaInstagram, FaFacebook, FaViber, FaWhatsapp } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
+import Toast from './Toast';
 
 interface ContactFormProps {
   onClose?: () => void;
@@ -30,6 +31,11 @@ export default function ContactForm({ onClose }: ContactFormProps) {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{ isOpen: boolean; type: 'success' | 'error'; message: string }>({
+    isOpen: false,
+    type: 'success',
+    message: ''
+  });
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -72,7 +78,11 @@ export default function ContactForm({ onClose }: ContactFormProps) {
           EMAILJS_CONFIG.SERVICE_ID === 'YOUR_SERVICE_ID' ||
           EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_TEMPLATE_ID') {
         console.error('EmailJS не налаштовано! Будь ласка, додайте ключі в app/config/emailjs.ts');
-        alert('Помилка: EmailJS не налаштовано. Перевірте конфігурацію.');
+        setToast({
+          isOpen: true,
+          type: 'error',
+          message: 'EmailJS не налаштовано. Перевірте конфігурацію.'
+        });
         setIsSubmitting(false);
         return;
       }
@@ -99,11 +109,21 @@ export default function ContactForm({ onClose }: ContactFormProps) {
       // Успішна відправка
       setFormData({ name: '', phone: '', message: '' });
       setErrors({});
-      alert('Дякуємо за заявку! Ми зв\'яжемося з вами найближчим часом.');
-      if (onClose) onClose();
+      setToast({
+        isOpen: true,
+        type: 'success',
+        message: 'Дякуємо за заявку! Ми зв\'яжемося з вами найближчим часом.'
+      });
+      setTimeout(() => {
+        if (onClose) onClose();
+      }, 2000);
     } catch (error) {
       console.error('Помилка відправки email:', error);
-      alert('Помилка відправки форми. Спробуйте пізніше або зв\'яжіться з нами напряму.');
+      setToast({
+        isOpen: true,
+        type: 'error',
+        message: 'Помилка відправки форми. Спробуйте пізніше або зв\'яжіться з нами напряму.'
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -255,6 +275,13 @@ export default function ContactForm({ onClose }: ContactFormProps) {
       <p className="text-sm text-gray-500 mt-4 text-center">
         Ваші дані захищені політикою конфіденційності компанії Vertex.
       </p>
+      
+      <Toast
+        isOpen={toast.isOpen}
+        onClose={() => setToast({ ...toast, isOpen: false })}
+        type={toast.type}
+        message={toast.message}
+      />
     </div>
   );
 }

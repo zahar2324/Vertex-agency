@@ -71,9 +71,9 @@ export default function Services({ onOpenModal }: ServicesProps) {
                 </p>
                 <button 
                   onClick={onOpenModal}
-                  className="text-blue-600 font-semibold hover:text-blue-700 transition"
+                  className="text-blue-600 font-semibold hover:text-blue-700 transition cursor-pointer"
                 >
-                  ПРИКЛАД →
+                  ЗАМОВИТИ →
                 </button>
               </div>
             </div>

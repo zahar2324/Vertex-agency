@@ -5,6 +5,7 @@ import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import { FaTelegram, FaInstagram, FaFacebook, FaViber, FaWhatsapp } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
+import Toast from './Toast';
 
 interface ContactsProps {
   onOpenModal: () => void;
@@ -30,6 +31,11 @@ export default function Contacts({ onOpenModal }: ContactsProps) {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{ isOpen: boolean; type: 'success' | 'error'; message: string }>({
+    isOpen: false,
+    type: 'success',
+    message: ''
+  });
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -72,7 +78,11 @@ export default function Contacts({ onOpenModal }: ContactsProps) {
           EMAILJS_CONFIG.SERVICE_ID === 'YOUR_SERVICE_ID' ||
           EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_TEMPLATE_ID') {
         console.error('EmailJS не налаштовано! Будь ласка, додайте ключі в app/config/emailjs.ts');
-        alert('Помилка: EmailJS не налаштовано. Перевірте конфігурацію.');
+        setToast({
+          isOpen: true,
+          type: 'error',
+          message: 'EmailJS не налаштовано. Перевірте конфігурацію.'
+        });
         setIsSubmitting(false);
         return;
       }
@@ -99,10 +109,18 @@ export default function Contacts({ onOpenModal }: ContactsProps) {
       // Успішна відправка
       setFormData({ name: '', phone: '', message: '' });
       setErrors({});
-      alert('Дякуємо за заявку! Ми зв\'яжемося з вами найближчим часом.');
+      setToast({
+        isOpen: true,
+        type: 'success',
+        message: 'Дякуємо за заявку! Ми зв\'яжемося з вами найближчим часом.'
+      });
     } catch (error) {
       console.error('Помилка відправки email:', error);
-      alert('Помилка відправки форми. Спробуйте пізніше або зв\'яжіться з нами напряму.');
+      setToast({
+        isOpen: true,
+        type: 'error',
+        message: 'Помилка відправки форми. Спробуйте пізніше або зв\'яжіться з нами напряму.'
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -280,6 +298,13 @@ export default function Contacts({ onOpenModal }: ContactsProps) {
           </div>
         </div>
       </div>
+      
+      <Toast
+        isOpen={toast.isOpen}
+        onClose={() => setToast({ ...toast, isOpen: false })}
+        type={toast.type}
+        message={toast.message}
+      />
     </section>
   );
 }

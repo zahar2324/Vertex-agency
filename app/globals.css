@@ -104,3 +104,31 @@ html {
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+/* Placeholder styles */
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 1 !important;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Toast animation */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
