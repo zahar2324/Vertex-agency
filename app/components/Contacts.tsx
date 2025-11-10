@@ -142,7 +142,7 @@ export default function Contacts({ onOpenModal }: ContactsProps) {
 
   return (
     <section id="contacts" className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 text-center">
           Зв'яжіться з нами
         </h2>
@@ -231,7 +231,7 @@ export default function Contacts({ onOpenModal }: ContactsProps) {
               <div className="space-y-4">
                 <a href="tel:+380506782481" className="flex items-center text-gray-700 hover:text-blue-600 transition">
                   <Phone className="w-5 h-5 mr-3 text-blue-600" />
-                  <span>+38 (050) 678-24-81</span>
+                  <span>+38 (093) 397-84-42</span>
                 </a>
                 <a href="mailto:vertex-web.com.ua@gmail.com" className="flex items-center text-gray-700 hover:text-blue-600 transition">
                   <Mail className="w-5 h-5 mr-3 text-blue-600" />

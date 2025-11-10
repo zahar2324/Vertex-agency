@@ -46,7 +46,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
         {/* Scrolling Text Banner */}
         <div className="mb-12 md:mb-16 overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 py-4 rounded-lg shadow-lg relative">
           <div className="flex whitespace-nowrap animate-scroll">

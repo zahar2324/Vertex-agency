@@ -44,7 +44,7 @@ export default function HowWeWork() {
 
   return (
     <section id="how-we-work" className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 md:mb-16 text-center">
           Як ми працюємо
         </h2>

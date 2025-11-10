@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   keywords: "створення сайтів, веб-розробка, діджитал агенція, односторінковий сайт, інтернет-магазин, корпоративний сайт, веб-дизайн, розробка сайтів Україна, Харків, Vertex",
   authors: [{ name: "Vertex Digital Agency" }],
   robots: "index, follow",
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   verification: {
     google: "c3VuA-rKtrEzRktLeYP7TBf5lY_E0NzW2FDDB1vaL8I",
   },

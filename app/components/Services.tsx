@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface ServicesProps {
   onOpenModal: () => void;
 }
@@ -7,7 +9,7 @@ interface ServicesProps {
 interface Service {
   title: string;
   description: string;
-  color: string;
+  image: string;
 }
 
 export default function Services({ onOpenModal }: ServicesProps) {
@@ -15,38 +17,38 @@ export default function Services({ onOpenModal }: ServicesProps) {
     {
       title: 'Односторінковий сайт',
       description: 'Презентація компанії або продукту / послуг в інтернеті',
-      color: 'bg-blue-500'
+      image: '/project1.jpg'
     },
     {
       title: 'Сайт послуг',
       description: 'Інформація про компанію та послуги. Умови співпраці, етапи, ціни та приймання замовлень',
-      color: 'bg-green-500'
+      image: '/project2.jpg'
     },
     {
       title: 'Інтернет-магазин',
       description: 'Повноцінний сайт з можливістю додавання великої кількості товарів. Ведення обліку та статистики замовлень',
-      color: 'bg-purple-500'
+      image: '/project3.jpg'
     },
     {
       title: 'Онлайн каталог',
       description: 'Невелика кількість товарів з інформацією представлена в інтернеті з можливістю оформлювати замовлення',
-      color: 'bg-orange-500'
+      image: '/project4.jpg'
     },
     {
       title: 'Особистий бренд / майстер',
       description: 'Презентація спеціаліста, персональний блог, візитна картка де розміщена головна інформація',
-      color: 'bg-pink-500'
+      image: '/project5.jpg'
     },
     {
       title: 'Електронна візитка',
       description: 'Сучасне та зручне рішення щоб передати інформацію про себе, напрямки діяльності, контакти та інше',
-      color: 'bg-indigo-500'
+      image: '/project6.jpg'
     }
   ];
 
   return (
     <section id="services" className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Ми можемо створити
@@ -59,8 +61,14 @@ export default function Services({ onOpenModal }: ServicesProps) {
               key={index}
               className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2 shadow-md hover:shadow-xl"
             >
-              <div className={`${service.color} h-48 flex items-center justify-center`}>
-                <span className="text-white text-2xl font-bold">Image Placeholder</span>
+              <div className="h-48 relative overflow-hidden">
+                <Image 
+                  src={service.image} 
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">

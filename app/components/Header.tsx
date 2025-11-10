@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { FaTelegram, FaInstagram, FaFacebook } from 'react-icons/fa';
+import Image from 'next/image';
 
 interface HeaderProps {
   onOpenModal: () => void;
@@ -25,11 +26,18 @@ export default function Header({ onOpenModal }: HeaderProps) {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center">
-            <span className="text-2xl font-bold text-gray-900">
-              <span className="text-blue-600">Vertex</span>
-            </span>
-            <span className="text-xs text-gray-500 ml-2 hidden sm:block">ДІДЖИТАЛ АГЕНЦІЯ</span>
+          <div className="flex items-center ">
+            <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center">
+              <Image 
+                src="/Vertex_logo.png" 
+                alt="Vertex - Діджитал Агенція" 
+                width={180}
+                height={100}
+                className="h-16 md:h-20 w-auto object-contain"
+                priority
+              />
+            </a>
+            <span className="text-xs text-gray-500 hidden sm:block whitespace-nowrap mr-10">ДІДЖИТАЛ АГЕНЦІЯ</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -74,11 +82,11 @@ export default function Header({ onOpenModal }: HeaderProps) {
           {/* Phone, Social & Mobile Menu Button */}
           <div className="flex items-center space-x-3 lg:space-x-4">
             <a 
-              href="tel:+380506782481" 
+              href="tel:+380933978442" 
               className="hidden md:flex items-center text-blue-600 font-semibold hover:text-blue-700 underline"
             >
               <Phone className="w-4 h-4 mr-1" />
-              <span>050-678-24-81</span>
+              <span>093-397-84-42</span>
             </a>
             <div className="hidden lg:flex items-center space-x-2">
               <a 
