@@ -22,8 +22,8 @@ export default function Header({ onOpenModal }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4">
+    <header className="bg-white shadow-md sticky top-0 z-50 w-full">
+      <div className="w-full mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center ">

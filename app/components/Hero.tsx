@@ -29,13 +29,13 @@ export default function Hero({ onOpenModal }: HeroProps) {
 
           {/* Right Side - Image */}
           <div className="order-1 lg:order-2">
-            <div className="rounded-2xl h-96 md:h-[500px] overflow-hidden">
+            <div className="rounded-2xl h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden w-full flex items-center justify-center bg-gray-50">
               <Image 
                 src={bg} 
                 alt="Веб-розробка та дизайн сайтів" 
                 width={800}
                 height={500}
-                className="w-full h-full object-center"
+                className="w-full h-full object-contain object-center"
                 priority
                 unoptimized
               />
