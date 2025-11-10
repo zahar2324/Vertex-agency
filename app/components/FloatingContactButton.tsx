@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Phone, X } from 'lucide-react';
-import { FaTelegram, FaInstagram, FaViber, FaWhatsapp, IconType } from 'react-icons/fa';
+import { FaTelegram, FaInstagram, FaViber, FaWhatsapp } from 'react-icons/fa';
+import type { IconType } from 'react-icons';
 
 interface SocialLink {
   name: string;
